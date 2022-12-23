@@ -15,7 +15,14 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
 
 @NgModule({
-  declarations: [AppComponent, UserListComponent, UserAddComponent],
+  declarations: [
+    AppComponent,
+    UserListComponent,
+    HomePageComponent,
+    UserAddComponent,
+    WeatherComponent,
+    WeekendComponent,
+  ],
   imports: [
     RouterModule,
     BrowserModule,
@@ -24,10 +31,6 @@ import { UserAddComponent } from './components/user-add/user-add.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    UserListComponent,
-    HomePageComponent,
-    WeekendComponent,
-    WeatherComponent,
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
