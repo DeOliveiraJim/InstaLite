@@ -8,6 +8,11 @@ import { AbstractComponent } from 'src/app/components/abstract.component';
   styleUrls: ['./client-list.component.css'],
 })
 export class ClientListComponent extends AbstractComponent implements OnInit {
+
+  constructor(public override ngZone: NgZone, public override router: Router) {
+    super(ngZone, router);
+  }
+
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
