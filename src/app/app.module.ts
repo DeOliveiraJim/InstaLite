@@ -9,9 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserService } from './services/user.service';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { UserAddComponent } from './components/user-add/user-add.component';
 
 @NgModule({
-  declarations: [AppComponent, UserListComponent],
+  declarations: [AppComponent, UserListComponent, UserAddComponent],
   imports: [
     RouterModule,
     BrowserModule,
