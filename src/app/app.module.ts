@@ -13,6 +13,7 @@ import { WeatherComponent } from './components/weather/weather.component';
 import { UserService } from './services/user.service';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
+import { ImageAddComponent } from './components/image-add/image-add.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { UserAddComponent } from './components/user-add/user-add.component';
     UserAddComponent,
     WeatherComponent,
     WeekendComponent,
+    ImageAddComponent,
   ],
   imports: [
     RouterModule,

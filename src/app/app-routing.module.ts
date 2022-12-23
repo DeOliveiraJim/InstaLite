@@ -1,15 +1,19 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from 'src/app/components/home-page/home-page.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { ImageAddComponent } from './components/image-add/image-add.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/' },
   {
     path: 'users',
     component: UserListComponent,
   },
-  { path: '', component: HomePageComponent }
+  { path: '', component: HomePageComponent },
+  {
+    path: 'images',
+    component: ImageAddComponent,
+  },
 ];
 
 @NgModule({
