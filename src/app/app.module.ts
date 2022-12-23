@@ -7,6 +7,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomePageComponent } from 'src/app/components/home-page/home-page.component';
+import { WeekendComponent } from './components/weekend/weekend.component';
+import { WeatherComponent } from './components/weather/weather.component';
 import { UserService } from './services/user.service';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
@@ -21,6 +24,10 @@ import { UserAddComponent } from './components/user-add/user-add.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    UserListComponent,
+    HomePageComponent,
+    WeekendComponent,
+    WeatherComponent,
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
