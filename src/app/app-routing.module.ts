@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   {
-    path: 'images',
+    path: 'files',
     component: ImageAddComponent,
   },
   {
