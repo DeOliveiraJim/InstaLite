@@ -42,9 +42,9 @@ export abstract class AbstractComponent {
       cancelButtonText: 'Rester',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.ngZone.run(() => this.router.navigateByUrl(route));
-      } else if (result.isDismissed) {
         this.ngZone.run(() => this.router.navigateByUrl('/'));
+      } else if (result.isDismissed) {
+        this.ngZone.run(() => this.router.navigateByUrl(route));
       }
     });
   }

@@ -19,7 +19,6 @@ export abstract class AbstractService {
   // Error handling
   errorHandler(error: any) {
     console.log(error);
-    let errors = error.error.errors;
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
@@ -27,13 +26,12 @@ export abstract class AbstractService {
     } else {
       // Get server-side error
       errorMessage = 'Erreur !!';
-      if (error.error != undefined) {
+      if (error.error.message != undefined) {
+        errorMessage = 'Erreur : ' + error.error.message;
+      } else if (error.error.error != undefined) {
+        errorMessage = 'Erreur : ' + error.error.error;
+      } else {
         errorMessage = 'Erreur : ' + error.error;
-      }
-      if (errors != undefined) {
-        errors.forEach((element: { field: string; message: string }) => {
-          errorMessage += element.field + ' -> ' + element.message + '\n';
-        });
       }
     }
     return throwError(() => {

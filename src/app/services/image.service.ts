@@ -17,7 +17,7 @@ export class ImageService extends AbstractService {
   }
 
   optionRequete = new HttpHeaders({
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'http://localhost:4200',
   });
 
   upload(file: File): Observable<HttpEvent<any>> {
@@ -25,7 +25,7 @@ export class ImageService extends AbstractService {
 
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', `${this.baseurl}/image`, formData, {
+    const req = new HttpRequest('POST', `${this.baseurl}/upload`, formData, {
       headers: this.optionRequete,
       reportProgress: true,
       responseType: 'json',
@@ -36,7 +36,7 @@ export class ImageService extends AbstractService {
   }
 
   getFiles(): Observable<any> {
-    return this.http.get(`${this.baseurl}/image`, {
+    return this.http.get(`${this.baseurl}/files`, {
       headers: this.optionRequete,
     });
   }
@@ -44,9 +44,18 @@ export class ImageService extends AbstractService {
   // GET
   getAllFiles(): Observable<any> {
     return this.http
-      .get<any>(this.baseurl + '/image', {
+      .get<any>(this.baseurl + '/files', {
         headers: this.optionRequete,
       })
       .pipe(retry(1), catchError(this.errorHandler));
+  }
+
+  // DELETE
+  deleteFile(id: number) {
+    return this.http
+      .delete<any>(this.baseurl + '/files/' + id, {
+        headers: this.optionRequete,
+      })
+      .pipe(catchError(this.errorHandler));
   }
 }

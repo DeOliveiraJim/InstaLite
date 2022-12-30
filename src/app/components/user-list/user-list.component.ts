@@ -29,12 +29,20 @@ export class UserListComponent extends AbstractComponent implements OnInit {
   }
   // users list
   loadUsers() {
-    return this.userService.getUsers().subscribe((data) => {
-      console.log(data);
-      this.userList.push(...data);
-      this.searchList = Array.from(this.userList);
+    return this.userService.getUsers().subscribe({
+      next: (data) => {
+        if (data) {
+          console.log(data);
+          this.userList.push(...data);
+          this.searchList = Array.from(this.userList);
+        }
+      },
+      error: (err) => {
+        this.showErrorAlert(err, '/users/add');
+      },
     });
   }
+
   // Delete user
   deleteUser(data: User) {
     let index = this.userList
@@ -42,8 +50,14 @@ export class UserListComponent extends AbstractComponent implements OnInit {
         return user.username;
       })
       .indexOf(data.username);
-    return this.userService.deleteUser(data.id).subscribe((res) => {
-      this.userList.splice(index, 1);
+    return this.userService.deleteUser(data.id).subscribe({
+      next: (res) => {
+        this.userList.splice(index, 1);
+        this.showSuccesAlert('/users');
+      },
+      error: (err) => {
+        this.showErrorAlert(err, '/users');
+      },
     });
   }
 

@@ -41,10 +41,10 @@ export class UserConnectComponent extends AbstractComponent implements OnInit {
     }
     this.userService.logUser(this.userForm.value).subscribe({
       next: (user) => {
-        this.showSuccesAlert('/users');
+        this.showSuccesAlert('/');
       },
       error: (err) => {
-        this.showErrorAlert(err, '/users/add');
+        this.showErrorAlert(err, '/login');
       },
     });
   }
