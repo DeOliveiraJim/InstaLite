@@ -17,7 +17,7 @@ export class ImageService extends AbstractService {
   }
 
   optionRequete = new HttpHeaders({
-    'Access-Control-Allow-Origin': 'http://localhost:4200',
+    'Access-Control-Allow-Origin': '*',
   });
 
   upload(file: File): Observable<HttpEvent<any>> {

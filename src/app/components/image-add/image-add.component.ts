@@ -122,17 +122,14 @@ export class ImageAddComponent extends AbstractComponent implements OnInit {
       cancelButtonText: 'Supprimer',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.downloadFile(file.url, file.type);
+        this.downloadFile(file.url);
       } else if (result.isDismissed) {
         this.deleteImage(file);
       }
     });
   }
 
-  downloadFile(data: BlobPart, dataType: string) {
-    console.log(dataType);
-    const blob = new Blob([data], { type: 'image/jpeg;charset=utf8"' });
-    const url = window.URL.createObjectURL(blob);
-    window.open(url);
+  downloadFile(data: string) {
+    window.open(data);
   }
 }

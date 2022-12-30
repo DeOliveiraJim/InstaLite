@@ -16,7 +16,10 @@ import { UserAddComponent } from './components/user-add/user-add.component';
 import { ImageAddComponent } from './components/image-add/image-add.component';
 import { UserConnectComponent } from './components/user-connect/user-connect.component';
 import { AuthInterceptor } from './authinterceptor';
-
+import { VgCoreModule } from '@videogular/ngx-videogular/core';
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +39,10 @@ import { AuthInterceptor } from './authinterceptor';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
   ],
   providers: [
     UserService,
