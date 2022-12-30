@@ -16,6 +16,7 @@ import { UserAddComponent } from './components/user-add/user-add.component';
 import { ImageAddComponent } from './components/image-add/image-add.component';
 import { UserConnectComponent } from './components/user-connect/user-connect.component';
 import { AuthInterceptor } from './authinterceptor';
+import { UserDisconnectComponent } from './components/user-disconnect/user-disconnect.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AuthInterceptor } from './authinterceptor';
     WeekendComponent,
     ImageAddComponent,
     UserConnectComponent,
+    UserDisconnectComponent,
   ],
   imports: [
     RouterModule,

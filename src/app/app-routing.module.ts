@@ -5,6 +5,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { ImageAddComponent } from './components/image-add/image-add.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
 import { UserConnectComponent } from './components/user-connect/user-connect.component';
+import { UserDisconnectComponent } from './components/user-disconnect/user-disconnect.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
     path: 'login',
     component: UserConnectComponent,
   },
+  {
+    path: 'logout',
+    component: UserDisconnectComponent,
+  }
 ];
 
 @NgModule({
