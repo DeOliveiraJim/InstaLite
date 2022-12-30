@@ -39,7 +39,6 @@ export class UserAddComponent extends AbstractComponent implements OnInit {
     if (this.userForm.invalid) {
       return;
     }
-    console.log('Want to create a user ' + this.userForm.value.username);
     this.userService.createUser(this.userForm.value).subscribe({
       next: (user) => {
         this.showSuccesAlert('/users');

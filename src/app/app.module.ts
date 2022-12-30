@@ -20,6 +20,8 @@ import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
+import { UserDisconnectComponent } from './components/user-disconnect/user-disconnect.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,7 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
     WeekendComponent,
     ImageAddComponent,
     UserConnectComponent,
+    UserDisconnectComponent,
   ],
   imports: [
     RouterModule,

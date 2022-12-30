@@ -18,7 +18,7 @@ export abstract class AbstractService {
 
   // Error handling
   errorHandler(error: any) {
-    console.log(error);
+    if (!environment.production) console.log(error);
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error

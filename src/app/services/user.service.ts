@@ -15,7 +15,7 @@ export class UserService extends AbstractService {
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     }),
     withCredentials: true,
   };
@@ -83,5 +83,10 @@ export class UserService extends AbstractService {
     return this.http
       .delete<User>(this.baseurl + '/user/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
+  }
+
+  //  POST
+  logoutUser(): Observable<any> {    
+    return this.http.post(this.baseurl + '/logout', this.httpOptions);
   }
 }

@@ -2,7 +2,9 @@
   <a class="navbar-brand" href="#">Porc Te Faux Lit Haut</a>
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="#">Images</a>
-      <a class="nav-item nav-link" href="#">Connexion</a>
+      <a *ngIf="isAuthenticated" class="nav-item nav-link" href="logout">Déconnexion</a>
+      <a *ngIf="!isAuthenticated" class="nav-item nav-link" href="login">Connexion</a>
+      <a *ngIf="!isAuthenticated" class="nav-item nav-link" href="user/add">Inscription</a>
     </div>
 </nav>
 <div id="content" class="d-flex flex-column align-items-center">
