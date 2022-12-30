@@ -1,15 +1,15 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 import { AbstractComponent } from '../abstract.component';
-import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-user-add',
-  templateUrl: './user-add.component.html',
-  styleUrls: ['./user-add.component.css'],
+  selector: 'app-user-connect',
+  templateUrl: './user-connect.component.html',
+  styleUrls: ['./user-connect.component.css'],
 })
-export class UserAddComponent extends AbstractComponent implements OnInit {
+export class UserConnectComponent extends AbstractComponent implements OnInit {
   userForm!: FormGroup;
   submitted: boolean = false;
   ngOnInit() {
@@ -39,8 +39,7 @@ export class UserAddComponent extends AbstractComponent implements OnInit {
     if (this.userForm.invalid) {
       return;
     }
-    console.log('Want to create a user ' + this.userForm.value.username);
-    this.userService.createUser(this.userForm.value).subscribe({
+    this.userService.logUser(this.userForm.value).subscribe({
       next: (user) => {
         this.showSuccesAlert('/users');
       },

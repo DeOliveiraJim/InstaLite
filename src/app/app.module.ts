@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +14,8 @@ import { UserService } from './services/user.service';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
 import { ImageAddComponent } from './components/image-add/image-add.component';
+import { UserConnectComponent } from './components/user-connect/user-connect.component';
+import { AuthInterceptor } from './authinterceptor';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ImageAddComponent } from './components/image-add/image-add.component';
     WeatherComponent,
     WeekendComponent,
     ImageAddComponent,
+    UserConnectComponent,
   ],
   imports: [
     RouterModule,
@@ -34,7 +37,14 @@ import { ImageAddComponent } from './components/image-add/image-add.component';
     ReactiveFormsModule,
     NgxPaginationModule,
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

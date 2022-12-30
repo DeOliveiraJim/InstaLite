@@ -34,7 +34,7 @@
             <tbody>
               <tr *ngFor="let user of userList | paginate: { itemsPerPage: 6, currentPage: pages }">
                 <th scope="row">{{user.id}}</th>
-                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
                 <td>
                   <button type="button" class="btn btn-success btn-sm me-1"
                     [routerLink]="['/users/edit', user.id]">Editer</button>

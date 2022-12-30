@@ -18,7 +18,7 @@ export class ImageAddComponent implements OnInit {
   constructor(private uploadService: ImageService) {}
 
   ngOnInit(): void {
-    this.imageInfos = this.uploadService.getFiles();
+    this.imageInfos = this.uploadService.getAllFiles();
   }
 
   selectFile(event: any): void {

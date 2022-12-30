@@ -26,15 +26,9 @@ export abstract class AbstractService {
       errorMessage = error.error.message;
     } else {
       // Get server-side error
-      errorMessage = 'Error Code: ${error.status}\n${error.message}\n';
+      errorMessage = 'Erreur !!';
       if (error.error != undefined) {
-        errorMessage =
-          'Error Code:' +
-          error.error.status +
-          '\n' +
-          '|| ' +
-          error.error.message +
-          '\n';
+        errorMessage = 'Erreur : ' + error.error;
       }
       if (errors != undefined) {
         errors.forEach((element: { field: string; message: string }) => {

@@ -30,6 +30,7 @@ export class UserListComponent extends AbstractComponent implements OnInit {
   // users list
   loadUsers() {
     return this.userService.getUsers().subscribe((data) => {
+      console.log(data);
       this.userList.push(...data);
       this.searchList = Array.from(this.userList);
     });
@@ -37,10 +38,10 @@ export class UserListComponent extends AbstractComponent implements OnInit {
   // Delete user
   deleteUser(data: User) {
     let index = this.userList
-      .map((user: { name: string }) => {
-        return user.name;
+      .map((user: { username: string }) => {
+        return user.username;
       })
-      .indexOf(data.name);
+      .indexOf(data.username);
     return this.userService.deleteUser(data.id).subscribe((res) => {
       this.userList.splice(index, 1);
     });
@@ -55,8 +56,8 @@ export class UserListComponent extends AbstractComponent implements OnInit {
 
   research(userName: string) {
     this.userList = Array.from(this.searchList)
-      .filter((user: { name: string }) => user.name.includes(userName))
-      .sort((a, b) => (a.name.length < b.name.length ? -1 : 1));
+      .filter((user: { username: string }) => user.username.includes(userName))
+      .sort((a, b) => (a.username.length < b.username.length ? -1 : 1));
   }
 
   resetSearch() {
@@ -72,8 +73,8 @@ export class UserListComponent extends AbstractComponent implements OnInit {
       }
       this.sortNbName = -this.sortNbName;
 
-      this.userList.sort((a: { name: string }, b: { name: string }) => {
-        if (a.name < b.name) {
+      this.userList.sort((a: { username: string }, b: { username: string }) => {
+        if (a.username < b.username) {
           return -this.sortNbName;
         } else {
           return this.sortNbName;
