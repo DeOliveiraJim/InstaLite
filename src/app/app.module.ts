@@ -21,6 +21,7 @@ import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { UserDisconnectComponent } from './components/user-disconnect/user-disconnect.component';
+import { FilesEditComponent } from './components/files-edit/files-edit.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UserDisconnectComponent } from './components/user-disconnect/user-disco
     ImageAddComponent,
     UserConnectComponent,
     UserDisconnectComponent,
+    FilesEditComponent,
   ],
   imports: [
     RouterModule,

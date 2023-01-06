@@ -34,6 +34,8 @@
       <tr>
         <th scope="col">URL</th>
         <th scope="col">Fichier</th>
+        <th scope="col">Status</th>
+        <th scope="col">Edition</th>
         <th scope="col">Suppression</th>
       </tr>
     </thead>
@@ -55,6 +57,13 @@
             </video>
           </vg-player> 
           <a (click)="showChoiceAlert(file)" > <img src="{{ file.url }}" alt="{{ file.name }}" height="500px" /></a>
+        </td>
+        <td>
+          {{file.status}}
+        </td>
+        <td>
+          <button type="button" class="btn btn-success btn-sm me-1"
+          [routerLink]="['/files/edit', file.id]">Editer</button>
         </td>
         <td>
           <button type="button" class="btn btn-danger btn-sm me-1"

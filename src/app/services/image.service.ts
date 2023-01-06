@@ -11,6 +11,7 @@ import { AbstractService } from './abstract.service';
 @Injectable({
   providedIn: 'root',
 })
+
 export class ImageService extends AbstractService {
   constructor(private http: HttpClient) {
     super();
@@ -35,10 +36,24 @@ export class ImageService extends AbstractService {
     return this.http.request(req);
   }
 
+  // GET
+  getFile(id: string) : Observable<any> {
+    return this.http.get(`${this.baseurl}/files/` + id, {
+      headers: this.optionRequete,
+    }).pipe(catchError(this.errorHandler));; 
+  }
+
+  // GET
+  getFileInfo(id: string) : Observable<any> {
+    return this.http.get(`${this.baseurl}/filesInfo/` + id, {
+      headers: this.optionRequete,
+    }).pipe(catchError(this.errorHandler));; 
+  }
+  // GET
   getFiles(): Observable<any> {
     return this.http.get(`${this.baseurl}/files`, {
       headers: this.optionRequete,
-    });
+    }).pipe(catchError(this.errorHandler));;
   }
 
   // GET
@@ -47,8 +62,10 @@ export class ImageService extends AbstractService {
       .get<any>(this.baseurl + '/files', {
         headers: this.optionRequete,
       })
-      .pipe(retry(1), catchError(this.errorHandler));
+      .pipe(catchError(this.errorHandler));
   }
+
+  
 
   // DELETE
   deleteFile(id: number) {
@@ -58,4 +75,16 @@ export class ImageService extends AbstractService {
       })
       .pipe(catchError(this.errorHandler));
   }
+
+  // PUT
+  updateStatus(id: string, data: string) {
+    console.log("j'envoi  " + data + " pour l'id " + id);
+    return this.http
+    .put<any>(this.baseurl + '/files/' + id, data, {
+      headers: this.optionRequete,
+    })
+    .pipe(catchError(this.errorHandler));
+  }
+
+
 }

@@ -25,8 +25,8 @@ export class UserConnectComponent extends AbstractComponent implements OnInit {
   }
   addUser() {
     this.userForm = this.fb.group({
-      username: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      username: [''],
+      password: [''],
     });
   }
 
