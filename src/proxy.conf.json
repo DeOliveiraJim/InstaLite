@@ -1,0 +1,9 @@
+{
+    "/weekend": {
+        "target": "https://estcequecestbientotleweekend.fr",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {"^/weekend" : ""}
+    }   
+}

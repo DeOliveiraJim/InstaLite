@@ -70,6 +70,10 @@
             },
             "development": {
               "browserTarget": "InstaLite:build:development"
+            },
+            "options": {
+              "browserTarget": "InstaLite:build",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

@@ -6,8 +6,11 @@ import { environment } from 'src/environments/environment';
 
 
 const requestOptions = {
-  headers: new HttpHeaders({ 
-    'Access-Control-Allow-Origin':'*'
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin':'*',
+    'Accept': 'text/plain',
+    'Content-Type': 'text/plain',
+    'responseType': 'text'
   })
 };
 
@@ -20,7 +23,7 @@ export class SearchService {
   constructor(private httpClient: HttpClient) { }
   
   getWeekend() : Observable<string> {
-    return this.httpClient.get<string>(environment.weekendUrl, requestOptions);
+    return this.httpClient.get("/weekend", {responseType: 'text'});
   }
 
 }
