@@ -5,13 +5,12 @@
             <h3>Ajout d'un utilisateur</h3>
             <form [formGroup]="userForm" (ngSubmit)="submitForm()">
                 <div class="form-group mb-2">
-                    <label>Nom d'utilisateur (email)</label>
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['username'].errors }">
-                    <div *ngIf="submitted && ctrls['username'].errors" class="invalid-feedback">
-                        <div >Nom d'utilisateur obligatoire au format d'un email </div>
-                    </div>
-                    <label>Mot de passe utilisateur </label>
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['password'].errors }">
+                    <label>Nom de l'utilisateur</label>
+                    <p>{{username}}</p>
+                    <label>Ancien mot de passe</label>
+                    <input type="password" formControlName="oldPassword" class="form-control">
+                    <label>Nouveau mot de passe </label>
+                    <input type="password" formControlName="newPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['password'].errors }">
                     <div *ngIf="submitted && ctrls['password'].errors" class="invalid-feedback">
                         <div >Mot de passe obligatoire (8 caractères,1 majuscule,1 caractère spécial mini)</div>
                     </div>
