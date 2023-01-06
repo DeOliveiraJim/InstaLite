@@ -12,6 +12,7 @@ import { AbstractComponent } from '../abstract.component';
 })
 export class WeekendComponent extends AbstractComponent implements OnInit {
 
+  weekendStatus: string | undefined = "";
 
   constructor(private searchService: SearchService, public override ngZone: NgZone, public override router: Router) {
   super(ngZone, router);
@@ -19,7 +20,11 @@ export class WeekendComponent extends AbstractComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchService.getWeekend().subscribe(result => {
-      console.log(result)
+      var parser = new DOMParser()
+      var parsed = parser.parseFromString(result, 'text/html')
+      let msg = parsed.getElementsByClassName("msg").item(0)?.innerHTML;
+
+      this.weekendStatus = msg
     })
   }
 

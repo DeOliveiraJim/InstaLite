@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config src/proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -22,6 +22,7 @@
     "@popperjs/core": "^2.10.2",
     "@videogular/ngx-videogular": "^6.0.0",
     "bootstrap": "^5.2.3",
+    "cors": "^2.8.5",
     "ngx-pagination": "^6.0.3",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.6.16",
