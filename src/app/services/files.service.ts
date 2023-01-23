@@ -11,8 +11,7 @@ import { AbstractService } from './abstract.service';
 @Injectable({
   providedIn: 'root',
 })
-
-export class ImageService extends AbstractService {
+export class FilesService extends AbstractService {
   constructor(private http: HttpClient) {
     super();
   }
@@ -37,23 +36,29 @@ export class ImageService extends AbstractService {
   }
 
   // GET
-  getFile(id: string) : Observable<any> {
-    return this.http.get(`${this.baseurl}/files/` + id, {
-      headers: this.optionRequete,
-    }).pipe(catchError(this.errorHandler));; 
+  getFile(id: string): Observable<any> {
+    return this.http
+      .get(`${this.baseurl}/files/` + id, {
+        headers: this.optionRequete,
+      })
+      .pipe(catchError(this.errorHandler));
   }
 
   // GET
-  getFileInfo(id: string) : Observable<any> {
-    return this.http.get(`${this.baseurl}/filesInfo/` + id, {
-      headers: this.optionRequete,
-    }).pipe(catchError(this.errorHandler));; 
+  getFileInfo(id: string): Observable<any> {
+    return this.http
+      .get(`${this.baseurl}/filesInfo/` + id, {
+        headers: this.optionRequete,
+      })
+      .pipe(catchError(this.errorHandler));
   }
   // GET
   getFiles(): Observable<any> {
-    return this.http.get(`${this.baseurl}/files`, {
-      headers: this.optionRequete,
-    }).pipe(catchError(this.errorHandler));;
+    return this.http
+      .get(`${this.baseurl}/files`, {
+        headers: this.optionRequete,
+      })
+      .pipe(catchError(this.errorHandler));
   }
 
   // GET
@@ -64,8 +69,6 @@ export class ImageService extends AbstractService {
       })
       .pipe(catchError(this.errorHandler));
   }
-
-  
 
   // DELETE
   deleteFile(id: number) {
@@ -80,11 +83,9 @@ export class ImageService extends AbstractService {
   updateStatus(id: string, data: string) {
     console.log("j'envoi  " + data + " pour l'id " + id);
     return this.http
-    .put<any>(this.baseurl + '/files/' + id, data, {
-      headers: this.optionRequete,
-    })
-    .pipe(catchError(this.errorHandler));
+      .put<any>(this.baseurl + '/files/' + id, data, {
+        headers: this.optionRequete,
+      })
+      .pipe(catchError(this.errorHandler));
   }
-
-
 }

@@ -13,7 +13,6 @@ import { WeatherComponent } from './components/weather/weather.component';
 import { UserService } from './services/user.service';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
-import { ImageAddComponent } from './components/image-add/image-add.component';
 import { UserConnectComponent } from './components/user-connect/user-connect.component';
 import { AuthInterceptor } from './authinterceptor';
 import { VgCoreModule } from '@videogular/ngx-videogular/core';
@@ -24,6 +23,7 @@ import { UserDisconnectComponent } from './components/user-disconnect/user-disco
 import { PressInsertComponent } from './components/press-insert/press-insert.component';
 import { FilesEditComponent } from './components/files-edit/files-edit.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
+import { FilesAddComponent } from './components/files-add/files-add.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { UserPageComponent } from './components/user-page/user-page.component';
     UserAddComponent,
     WeatherComponent,
     WeekendComponent,
-    ImageAddComponent,
+    FilesAddComponent,
     UserConnectComponent,
     UserDisconnectComponent,
     PressInsertComponent,

@@ -1,15 +1,15 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { ImageService } from '../../services/image.service';
 import { AbstractComponent } from '../abstract.component';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { FilesService } from 'src/app/services/files.service';
 @Component({
-  selector: 'app-image-add',
-  templateUrl: './image-add.component.html',
-  styleUrls: ['./image-add.component.css'],
+  selector: 'app-files-add',
+  templateUrl: './files-add.component.html',
+  styleUrls: ['./files-add.component.css'],
 })
-export class ImageAddComponent extends AbstractComponent implements OnInit {
+export class FilesAddComponent extends AbstractComponent implements OnInit {
   selectedFiles?: FileList;
   currentFile?: File;
   progress = 0;
@@ -19,7 +19,7 @@ export class ImageAddComponent extends AbstractComponent implements OnInit {
   filesList: Array<any> = [];
 
   constructor(
-    private uploadService: ImageService,
+    private uploadService: FilesService,
     ngZone: NgZone,
     router: Router
   ) {

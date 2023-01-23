@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:8081',
-  weekendUrl: 'https://estcequecestbientotleweekend.fr/'
+  url: 'http://localhost:8080',
+  weekendUrl: 'https://estcequecestbientotleweekend.fr/',
 };
 
 /*
