@@ -24,6 +24,8 @@ import { UserDisconnectComponent } from './components/user-disconnect/user-disco
 import { PressInsertComponent } from './components/press-insert/press-insert.component';
 import { FilesEditComponent } from './components/files-edit/files-edit.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FilesDisplayComponent } from './components/files-display/files-display.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { UserPageComponent } from './components/user-page/user-page.component';
     PressInsertComponent,
     FilesEditComponent,
     UserPageComponent,
+    NavbarComponent,
+    FilesDisplayComponent,
   ],
   imports: [
     RouterModule,

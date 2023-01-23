@@ -9,26 +9,12 @@ import { UserService } from './services/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent extends AbstractComponent implements OnInit {
-  title = 'InstaLite';
-  isAuthenticated = false;
+export class AppComponent implements OnInit {
 
-  constructor(
-    private userService: UserService, ngZone: NgZone, router: Router
-  ) {
-    super(ngZone, router);
+  ngOnInit(): void {
+    
   }
 
-  ngOnInit() {
-    this.userService.getWelcomeUser().subscribe({
-      next: (str) => {
-        this.isAuthenticated = true;
-      },
-      error: (err) => {
-        this.isAuthenticated = false;
-        console.log("AIE AIE OUILLE")
-      },
-    })
-  }
+  
 
 }
