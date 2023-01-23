@@ -2,16 +2,17 @@
     <div class="row">
         <!-- Form -->
         <div class="col-md-12">
-            <h3>Ajout d'un utilisateur</h3>
+            <h3>Profil de l'utilisateur {{username}}</h3>
+            <h4> Changement de mot de passe : </h4>
             <form [formGroup]="userForm" (ngSubmit)="submitForm()">
                 <div class="form-group mb-2">
-                    <label>Nom de l'utilisateur</label>
+                    <label>Nom de l'utilisateur</label> 
                     <p>{{username}}</p>
                     <label>Ancien mot de passe</label>
-                    <input type="password" formControlName="oldPassword" class="form-control">
+                    <input type="password" formControlName="oldPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['oldPassword'].errors }" >
                     <label>Nouveau mot de passe </label>
-                    <input type="password" formControlName="newPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['password'].errors }">
-                    <div *ngIf="submitted && ctrls['password'].errors" class="invalid-feedback">
+                    <input type="password" formControlName="newPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['newPassword'].errors }">
+                    <div *ngIf="submitted && ctrls['newPassword'].errors" class="invalid-feedback">
                         <div >Mot de passe obligatoire (8 caractères,1 majuscule,1 caractère spécial mini)</div>
                     </div>
                 </div>

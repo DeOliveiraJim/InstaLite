@@ -35,7 +35,7 @@ export abstract class AbstractComponent {
   showSuccesAlert(route: string) {
     Swal.fire({
       title: 'Succès !',
-      text: "L'opération à réussie , choissisez votre redirection",
+      text: "L'opération a réussi, choissisez votre redirection",
       icon: 'success',
       showCancelButton: true,
       confirmButtonText: 'Accueil',

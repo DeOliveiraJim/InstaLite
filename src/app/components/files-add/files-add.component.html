@@ -43,20 +43,21 @@
       <tr *ngFor="let file of filesList  | paginate: { itemsPerPage: 6, currentPage: pages }">
         
         <td><a href="{{ file.url }}">{{ file.name }}</a></td>
-        <td *ngIf="(file.type + '').includes('image')"><a (click)="showChoiceAlert(file)" > <img src="{{ file.url }}" alt="{{ file.name }}" height="500px" /></a></td>
+        <td *ngIf="(file.type + '').includes('image')"><a (click)="showChoiceAlert(file)" > <img src="{{ file.url }}" alt="{{ file.name }}" height="200px" /></a></td>
         <td *ngIf="(file.type + '').includes('audio')">
           <audio
             controls
-            src="{{ file.url }}">
+            src="{{ file.url }}"
+            class="resize">
         </audio>
         </td>
-        <td *ngIf="(file.type + '').includes('video')">
+        <td class="resize" *ngIf="(file.type + '').includes('video')" >
           <vg-player>
-            <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
+            <video  [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
                 <source src="{{ file.url }}" type="video/mp4">
             </video>
           </vg-player> 
-          <a (click)="showChoiceAlert(file)" > <img src="{{ file.url }}" alt="{{ file.name }}" height="500px" /></a>
+          <a (click)="showChoiceAlert(file)" > <img class="resize" src="{{ file.url }}" alt="{{ file.name }}"   /></a>
         </td>
         <td>
           {{file.status}}

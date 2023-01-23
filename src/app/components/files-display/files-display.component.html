@@ -1,14 +1,36 @@
-<ng-container class="d-flex flex-column" *ngFor="let file of files">
-        <img *ngIf="(file.type + '').includes('image')" src="{{ file.url }}" alt="{{ file.name }}" height="500px" />
-          <audio
-          *ngIf="(file.type + '').includes('audio')"
-            controls
-            src="{{ file.url }}">
-        </audio>
-          <vg-player *ngIf="(file.type + '').includes('video')">
-            <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
-                <source src="{{ file.url }}" type="video/mp4">
-            </video>
-          </vg-player> 
-          <img src="{{ file.url }}" alt="{{ file.name }}" height="500px"/>
-</ng-container>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">URL</th>
+      <th scope="col">Fichier</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let file of filesList  | paginate: { itemsPerPage: 6, currentPage: pages }">      
+      <td><a href="{{ file.url }}">{{ file.name }}</a></td>
+      <td *ngIf="(file.type + '').includes('image')"><a  > <img src="{{ file.url }}" alt="{{ file.name }}" height="200px" /></a></td>
+      <td *ngIf="(file.type + '').includes('audio')">
+        <audio
+          controls
+          src="{{ file.url }}"
+          class="resize">
+      </audio>
+      </td>
+      <td class="resize" *ngIf="(file.type + '').includes('video')" >
+        <vg-player>
+          <video  [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
+              <source src="{{ file.url }}" type="video/mp4">
+          </video>
+        </vg-player> 
+        <a > <img class="resize" src="{{ file.url }}" alt="{{ file.name }}"   /></a>
+      </td>
+      <td>
+        {{file.status}}
+      </td>     
+    </tr>
+  </tbody>
+</table>
+<pagination-controls class="pagination" (pageChange)="pages = $event" previousLabel="Précédent"
+nextLabel="Suivant" [responsive]="true">
+</pagination-controls>

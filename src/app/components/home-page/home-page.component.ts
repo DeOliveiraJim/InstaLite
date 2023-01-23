@@ -1,7 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractComponent } from 'src/app/components/abstract.component';
-import { ImageService } from 'src/app/services/image.service';
+import { FilesService } from 'src/app/services/files.service';
 import { UserService } from '../../services/user.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 
@@ -17,7 +17,7 @@ export class HomePageComponent extends AbstractComponent {
     public override ngZone: NgZone,
     public override router: Router,
     public userService: UserService,
-    public imageService: ImageService
+    public filesService: FilesService
   ) {
     super(ngZone, router);
   }

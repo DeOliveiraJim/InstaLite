@@ -39,3 +39,8 @@
     cursor: not-allowed!important;
 }
 
+.resize {
+    max-width: 400px;
+    max-height: 400px;
+}
+

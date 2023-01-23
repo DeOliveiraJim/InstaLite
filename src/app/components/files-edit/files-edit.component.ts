@@ -1,29 +1,27 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ImageService } from 'src/app/services/image.service';
+import { FilesService } from 'src/app/services/files.service';
 import { Status } from 'src/app/shared/status';
 import { AbstractComponent } from '../abstract.component';
 
 @Component({
   selector: 'app-files-edit',
   templateUrl: './files-edit.component.html',
-  styleUrls: ['./files-edit.component.css']
+  styleUrls: ['./files-edit.component.css'],
 })
 export class FilesEditComponent extends AbstractComponent implements OnInit {
   updateFileForm!: FormGroup;
-  id !: string;
-  file !: any;
-  
+  id!: string;
+  file!: any;
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   constructor(
     private actRoute: ActivatedRoute,
     public fb: FormBuilder,
-    public fileService : ImageService,
+    public fileService: FilesService,
     ngZone: NgZone,
-    router: Router,
+    router: Router
   ) {
     super(ngZone, router);
     this.id = this.actRoute.snapshot.paramMap.get('id')!;
@@ -35,9 +33,8 @@ export class FilesEditComponent extends AbstractComponent implements OnInit {
   }
 
   getFile() {
-    console.log("je get");
+    console.log('je get');
     this.fileService.getFileInfo(this.id).subscribe({
-      
       next: (data) => {
         this.file = data;
       },
@@ -48,22 +45,21 @@ export class FilesEditComponent extends AbstractComponent implements OnInit {
   }
 
   submitForm() {
-    
-    var s = <'hidden' | 'public' | 'private'>(<HTMLSelectElement>document.getElementById('status')).value
+    var s = <'hidden' | 'public' | 'private'>(
+      (<HTMLSelectElement>document.getElementById('status')).value
+    );
     // On évite les injections ici.
-    if(!(<any>Object).values(Status).includes(s)) {
+    if (!(<any>Object).values(Status).includes(s)) {
       return;
-    } 
-    console.log("Je récup "+ s );
-    this.fileService
-      .updateStatus(this.id, s )
-      .subscribe({
-        next: (user) => {
-          this.showSuccesAlert('/files');
-        },
-        error: (err) => {
-          this.showErrorAlert(err, '/files');
-        },
-      });
+    }
+    console.log('Je récup ' + s);
+    this.fileService.updateStatus(this.id, s).subscribe({
+      next: (user) => {
+        this.showSuccesAlert('/files');
+      },
+      error: (err) => {
+        this.showErrorAlert(err, '/files');
+      },
+    });
   }
 }
