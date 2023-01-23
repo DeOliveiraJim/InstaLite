@@ -6,15 +6,9 @@
             <form [formGroup]="userForm" (ngSubmit)="submitForm()">
                 <div class="form-group mb-2">
                     <label>Nom d'utilisateur (email)</label>
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['username'].errors }">
-                    <div *ngIf="submitted && ctrls['username'].errors" class="invalid-feedback">
-                        <div >Nom d'utilisateur obligatoire au format d'un email </div>
-                    </div>
+                    <input type="text" formControlName="username" class="form-control" >
                     <label>Mot de passe utilisateur </label>
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['password'].errors }">
-                    <div *ngIf="submitted && ctrls['password'].errors" class="invalid-feedback">
-                        <div >Mot de passe obligatoire </div>
-                    </div>
+                    <input type="password" formControlName="password" class="form-control">                
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
             </form>

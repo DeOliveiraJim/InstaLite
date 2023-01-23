@@ -34,7 +34,7 @@ export class ImageAddComponent extends AbstractComponent implements OnInit {
     return this.uploadService.getAllFiles().subscribe({
       next: (data) => {
         if (data) {
-          console.log(data);
+          this.filesList = new Array();
           this.filesList.push(...data);
         }
       },

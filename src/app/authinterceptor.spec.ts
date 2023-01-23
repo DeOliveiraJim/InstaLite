@@ -1,7 +1,7 @@
-import { Authinterceptor } from './authinterceptor';
+import { AuthInterceptor } from './authinterceptor';
 
 describe('Authinterceptor', () => {
   it('should create an instance', () => {
-    expect(new Authinterceptor()).toBeTruthy();
+    expect(new AuthInterceptor()).toBeTruthy();
   });
 });

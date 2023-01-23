@@ -44,15 +44,15 @@ export class UserService extends AbstractService {
   }
 
   // GET
-  getUser(id: number): Observable<User> {
+  getUser(id: string): Observable<User> {
     return this.http
       .get<User>(this.baseurl + '/user/' + id)
-      .pipe(retry(1), catchError(this.errorHandler));
+      .pipe(retry(0), catchError(this.errorHandler));
   }
   // GET
   getUsers(): Observable<User[]> {
     return this.http
-      .get<User[]>(this.baseurl + '/user')
+      .get<User[]>(this.baseurl + '/users')
       .pipe(retry(1), catchError(this.errorHandler));
   }
 
@@ -72,16 +72,16 @@ export class UserService extends AbstractService {
   updateUser(id: number, data: any): Observable<User> {
     return this.http
       .patch<User>(
-        this.baseurl + '/user/' + id,
+        this.baseurl + '/users/' + id,
         JSON.stringify(data),
         this.httpOptions
       )
-      .pipe(retry(1), catchError(this.errorHandler));
+      .pipe(retry(0), catchError(this.errorHandler));
   }
   // DELETE
   deleteUser(id: number) {
     return this.http
-      .delete<User>(this.baseurl + '/user/' + id, this.httpOptions)
+      .delete<User>(this.baseurl + '/users/' + id, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 

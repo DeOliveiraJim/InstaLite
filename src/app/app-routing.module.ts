@@ -6,6 +6,8 @@ import { ImageAddComponent } from './components/image-add/image-add.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
 import { UserConnectComponent } from './components/user-connect/user-connect.component';
 import { UserDisconnectComponent } from './components/user-disconnect/user-disconnect.component';
+import { FilesEditComponent } from './components/files-edit/files-edit.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
 
 const routes: Routes = [
   {
@@ -29,7 +31,15 @@ const routes: Routes = [
   {
     path: 'logout',
     component: UserDisconnectComponent,
-  }
+  },
+  {
+    path: 'files/edit/:id',
+    component: FilesEditComponent,
+  },
+  {
+    path: 'profile',
+    component: UserPageComponent,
+  }  
 ];
 
 @NgModule({

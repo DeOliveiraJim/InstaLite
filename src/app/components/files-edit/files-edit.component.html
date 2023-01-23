@@ -1,0 +1,30 @@
+<div class="container wrapper wrapper2">
+    <div class="row">
+        <!-- Form -->
+        <div class="col-md-12">
+            <h3>Modification du status d'un fichier</h3>
+            <form (ngSubmit)="submitForm()">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom du fichier</th>
+                        </tr>
+                    </thead>
+                    <ng-container *ngIf="currentFile">
+                        <td scope="col">{{currentFile.name}}</td>
+                      </ng-container>
+                    
+                </table>
+
+                <div>
+                    <select id="status">
+                        <option value="hidden">Caché</option>
+                        <option value="private">Privé</option>
+                        <option value="public">Publique</option>
+                      </select>                      
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
+            </form>
+        </div>
+    </div>
+</div>
