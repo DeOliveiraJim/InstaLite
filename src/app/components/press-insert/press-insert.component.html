@@ -1,0 +1,7 @@
+<ul class="d-flex flex-wrap justify-content-center list-unstyled gap-2">
+    <li style="width: 190px;" class="border rounded p-2" *ngFor="let item of pressInsertItems">
+        <h5>{{item.title}}</h5>
+        <img class="w-100" src="{{item.media}}"/>
+        <p>{{ item.description }}</p>
+    </li>
+</ul>

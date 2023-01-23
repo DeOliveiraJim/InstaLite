@@ -5,5 +5,12 @@
         "logLevel": "debug",
         "changeOrigin": true,
         "pathRewrite": {"^/weekend" : ""}
-    }   
+    },
+    "/lemonde": {
+        "target": "https://www.lemonde.fr/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {"^/lemonde" : ""}
+    }
 }
