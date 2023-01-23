@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { AbstractComponent } from '../abstract.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
+  providers: [NavbarComponent],
   selector: 'app-user-connect',
   templateUrl: './user-connect.component.html',
   styleUrls: ['./user-connect.component.css'],
@@ -19,7 +21,8 @@ export class UserConnectComponent extends AbstractComponent implements OnInit {
     public fb: FormBuilder,
     ngZone: NgZone,
     router: Router,
-    public userService: UserService
+    public userService: UserService,
+    private navbar: NavbarComponent
   ) {
     super(ngZone, router);
   }
@@ -41,7 +44,9 @@ export class UserConnectComponent extends AbstractComponent implements OnInit {
     }
     this.userService.logUser(this.userForm.value).subscribe({
       next: (user) => {
-        this.showSuccesAlert('/');
+        console.log('addConnectionCookie')
+        this.navbar.addConnectionCookie()
+        this.showSuccesAlert('/home');
       },
       error: (err) => {
         this.showErrorAlert(err, '/login');
