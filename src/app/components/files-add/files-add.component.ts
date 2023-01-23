@@ -118,12 +118,16 @@ export class FilesAddComponent extends AbstractComponent implements OnInit {
       text: "Voulez supprimer ou télécharger l'image ?",
       icon: 'question',
       showCancelButton: true,
+      showDenyButton: true,
+      denyButtonText: `Supprimer`,
       confirmButtonText: 'Télécharger',
-      cancelButtonText: 'Supprimer',
+      cancelButtonText: 'Annuler',
     }).then((result) => {
       if (result.isConfirmed) {
         this.downloadFile(file.url);
       } else if (result.isDismissed) {
+        Swal.fire('Changes are not saved', '');
+      } else if (result.isDenied) {
         this.deleteImage(file);
       }
     });

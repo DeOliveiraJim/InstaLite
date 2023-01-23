@@ -7,18 +7,18 @@ import { AbstractComponent } from '../abstract.component';
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
-  styleUrls: ['./user-page.component.css']
+  styleUrls: ['./user-page.component.css'],
 })
 export class UserPageComponent extends AbstractComponent implements OnInit {
-
   userForm!: FormGroup;
   submitted: boolean = false;
-  username : string = "";
+  username: string = '';
+  idUser: number = 0;
 
   ngOnInit() {
     this.getUser();
+    this.getUserId();
   }
-
 
   constructor(
     public fb: FormBuilder,
@@ -30,11 +30,10 @@ export class UserPageComponent extends AbstractComponent implements OnInit {
     super(ngZone, router);
   }
 
-
-  setUserInfos() {
-    var id = this.actRoute.snapshot.paramMap.get('id')!;
-    this.userService.getUser(id).subscribe({
+  getUserId() {
+    this.userService.getUser().subscribe({
       next: (data) => {
+        this.idUser = data.id;
         this.username = data.username;
       },
       error: (err) => {
@@ -43,35 +42,37 @@ export class UserPageComponent extends AbstractComponent implements OnInit {
     });
   }
 
-
-
-
-
-  
   getUser() {
     this.userForm = this.fb.group({
       oldPassword: [''],
-      newPassword: ['', [Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&\+\-_])(?=.*[a-zA-Z\d@$!%*?&+-_])+.{8,}$')]],
+      newPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(
+            '^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&+-_])(?=.*[a-zA-Zd@$!%*?&+-_])+.{8,}$'
+          ),
+        ],
+      ],
     });
   }
-
 
   get ctrls() {
     return this.userForm.controls;
   }
-  
 
   submitForm() {
     this.submitted = true;
     if (this.userForm.invalid) {
       return;
     }
-    this.userService.createUser(this.userForm.value).subscribe({
+    this.userService.updateUser(this.idUser, this.userForm.value).subscribe({
       next: (user) => {
-        this.showSuccesAlert('/users');
+        this.showSuccesAlert('/profile');
       },
       error: (err) => {
-        this.showErrorAlert(err, '/users/add');
+        this.showErrorAlert(err, '/profile');
       },
     });
   }

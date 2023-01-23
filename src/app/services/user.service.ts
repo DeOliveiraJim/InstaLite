@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
@@ -15,7 +15,7 @@ export class UserService extends AbstractService {
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     }),
     withCredentials: true,
   };
@@ -44,7 +44,7 @@ export class UserService extends AbstractService {
   }
 
   // GET
-  getUser(id: string): Observable<User> {
+  getUserById(id: string): Observable<User> {
     return this.http
       .get<User>(this.baseurl + '/user/' + id)
       .pipe(retry(0), catchError(this.errorHandler));
@@ -54,6 +54,13 @@ export class UserService extends AbstractService {
     return this.http
       .get<User[]>(this.baseurl + '/users')
       .pipe(retry(1), catchError(this.errorHandler));
+  }
+
+  // GET
+  getUser(): Observable<User> {
+    return this.http
+      .get<User>(this.baseurl + '/user')
+      .pipe(retry(0), catchError(this.errorHandler));
   }
 
   // GET
@@ -69,12 +76,16 @@ export class UserService extends AbstractService {
   }
 
   // PATCH
-  updateUser(id: number, data: any): Observable<User> {
+  updateUser(id: number, data: any): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http
-      .patch<User>(
-        this.baseurl + '/users/' + id,
+      .put(
+        this.baseurl + '/users/' + id + '/myInfo/password/',
         JSON.stringify(data),
-        this.httpOptions
+        {
+          headers,
+          responseType: 'text',
+        }
       )
       .pipe(retry(0), catchError(this.errorHandler));
   }
@@ -86,7 +97,7 @@ export class UserService extends AbstractService {
   }
 
   //  POST
-  logoutUser(): Observable<any> {    
+  logoutUser(): Observable<any> {
     return this.http.post(this.baseurl + '/logout', this.httpOptions);
   }
 }

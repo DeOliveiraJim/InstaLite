@@ -8,11 +8,16 @@ import { UserDisconnectComponent } from './components/user-disconnect/user-disco
 import { FilesEditComponent } from './components/files-edit/files-edit.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { FilesAddComponent } from './components/files-add/files-add.component';
+import { FilesDisplayComponent } from './components/files-display/files-display.component';
 
 const routes: Routes = [
   {
     path: 'users',
     component: UserListComponent,
+  },
+  {
+    path: 'display',
+    component: FilesDisplayComponent,
   },
   {
     path: 'users/add',

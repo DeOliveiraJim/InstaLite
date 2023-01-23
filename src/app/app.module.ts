@@ -24,6 +24,7 @@ import { PressInsertComponent } from './components/press-insert/press-insert.com
 import { FilesEditComponent } from './components/files-edit/files-edit.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { FilesAddComponent } from './components/files-add/files-add.component';
+import { FilesDisplayComponent } from './components/files-display/files-display.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FilesAddComponent } from './components/files-add/files-add.component';
     PressInsertComponent,
     FilesEditComponent,
     UserPageComponent,
+    FilesDisplayComponent,
   ],
   imports: [
     RouterModule,
