@@ -9,6 +9,7 @@ import { FilesEditComponent } from './components/files-edit/files-edit.component
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { FilesAddComponent } from './components/files-add/files-add.component';
 import { FilesDisplayComponent } from './components/files-display/files-display.component';
+import { ForbiddenAccessComponent } from './components/forbidden-access/forbidden-access.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: UserPageComponent,
+  },
+  {
+    path: 'forbidden',
+    component: ForbiddenAccessComponent,
   },
 ];
 

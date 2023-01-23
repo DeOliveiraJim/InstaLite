@@ -1,1 +1,7 @@
-<button (click)="logout()">Logout</button>
+<div class="text-center">
+    <h3>Voulez-vous vraiment vous déconnecter ?</h3>
+    <div class="d-flex flex-row gap-1 justify-content-center align-items-center">
+        <button class="btn btn-success" (click)="logout()">Oui</button>
+        <a class="btn btn-danger" href="/home">Non</a>
+    </div>
+</div>

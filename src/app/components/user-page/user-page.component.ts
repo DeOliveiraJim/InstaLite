@@ -37,7 +37,7 @@ export class UserPageComponent extends AbstractComponent implements OnInit {
         this.username = data.username;
       },
       error: (err) => {
-        this.showErrorAlert(err, '/profile');
+        this.router.navigateByUrl('forbidden')
       },
     });
   }
@@ -72,7 +72,7 @@ export class UserPageComponent extends AbstractComponent implements OnInit {
         this.showSuccesAlert('/profile');
       },
       error: (err) => {
-        this.showErrorAlert(err, '/profile');
+        this.router.navigateByUrl('forbidden')
       },
     });
   }

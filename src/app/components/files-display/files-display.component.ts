@@ -34,7 +34,7 @@ export class FilesDisplayComponent extends AbstractComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.showErrorAlert(err, '/files');
+        this.router.navigateByUrl('forbidden')
       },
     });
   }

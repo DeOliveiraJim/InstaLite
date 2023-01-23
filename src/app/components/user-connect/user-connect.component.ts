@@ -49,7 +49,7 @@ export class UserConnectComponent extends AbstractComponent implements OnInit {
         this.showSuccesAlert('/home');
       },
       error: (err) => {
-        this.showErrorAlert(err, '/login');
+        this.router.navigateByUrl('forbidden')
       },
     });
   }

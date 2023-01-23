@@ -39,7 +39,7 @@ export class FilesAddComponent extends AbstractComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.showErrorAlert(err, '/files');
+        this.router.navigateByUrl('forbidden')
       },
     });
   }
@@ -107,7 +107,7 @@ export class FilesAddComponent extends AbstractComponent implements OnInit {
         this.showSuccesAlert('/files');
       },
       error: (err) => {
-        this.showErrorAlert(err, '/files');
+        this.router.navigateByUrl('forbidden')
       },
     });
   }

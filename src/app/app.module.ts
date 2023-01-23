@@ -26,6 +26,7 @@ import { UserPageComponent } from './components/user-page/user-page.component';
 import { FilesAddComponent } from './components/files-add/files-add.component';
 import { FilesDisplayComponent } from './components/files-display/files-display.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ForbiddenAccessComponent } from './components/forbidden-access/forbidden-access.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     FilesEditComponent,
     UserPageComponent,
     FilesDisplayComponent,
-    NavbarComponent
+    NavbarComponent,
+    ForbiddenAccessComponent
   ],
   imports: [
     RouterModule,

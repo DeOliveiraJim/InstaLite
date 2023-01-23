@@ -38,7 +38,7 @@ export class UserListComponent extends AbstractComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.showErrorAlert(err, '/users/add');
+        this.router.navigateByUrl('forbidden')
       },
     });
   }
@@ -56,7 +56,7 @@ export class UserListComponent extends AbstractComponent implements OnInit {
         this.showSuccesAlert('/users');
       },
       error: (err) => {
-        this.showErrorAlert(err, '/users');
+        this.router.navigateByUrl('forbidden')
       },
     });
   }

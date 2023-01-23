@@ -39,7 +39,7 @@ export class FilesEditComponent extends AbstractComponent implements OnInit {
         this.file = data;
       },
       error: (err) => {
-        this.showErrorAlert(err, '/files');
+        this.router.navigateByUrl('forbidden')
       },
     });
   }
@@ -58,7 +58,7 @@ export class FilesEditComponent extends AbstractComponent implements OnInit {
         this.showSuccesAlert('/files');
       },
       error: (err) => {
-        this.showErrorAlert(err, '/files');
+        this.router.navigateByUrl('forbidden')
       },
     });
   }
