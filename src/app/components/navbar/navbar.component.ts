@@ -7,7 +7,7 @@ import { AbstractComponent } from '../abstract.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent extends AbstractComponent implements OnInit {
   title = 'InstaLite';
@@ -15,34 +15,37 @@ export class NavbarComponent extends AbstractComponent implements OnInit {
   testBoolean = false;
 
   constructor(
-    private userService: UserService, ngZone: NgZone, router: Router, private cookieService: CookieService, private cdr: ChangeDetectorRef
+    private userService: UserService,
+    ngZone: NgZone,
+    router: Router,
+    private cookieService: CookieService,
+    private cdr: ChangeDetectorRef
   ) {
     super(ngZone, router);
   }
 
   ngOnInit() {
-    console.log(this.cookieService.getAll())
-    this.isAuthenticated = this.isConnected()
+    console.log(this.cookieService.getAll());
+    this.isAuthenticated = this.isConnected();
   }
 
   isConnected() {
-    return this.cookieService.check("authentified")
+    return this.cookieService.check('authentified');
   }
 
   addConnectionCookie() {
-      this.cookieService.set("authentified", "true", 2)
-      this.isAuthenticated = true
-      this.cdr.detectChanges()
-      window.location.reload()
-      window.location.href = ""
+    this.cookieService.set('authentified', 'true', 2);
+    this.isAuthenticated = true;
+    this.cdr.detectChanges();
+    window.location.reload();
+    window.location.href = '';
   }
 
   removeConnectionCookie() {
-      this.cookieService.delete("authentified")
-      this.isAuthenticated = false
-      this.cdr.detectChanges()
-      window.location.reload()
-      window.location.href = ""
+    this.cookieService.delete('authentified');
+    this.isAuthenticated = false;
+    this.cdr.detectChanges();
+    window.location.reload();
+    window.location.href = '';
   }
-
 }
