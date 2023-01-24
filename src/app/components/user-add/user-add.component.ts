@@ -44,7 +44,7 @@ export class UserAddComponent extends AbstractComponent implements OnInit {
         this.showSuccesAlert('/users');
       },
       error: (err) => {
-        this.router.navigateByUrl('forbidden')
+        this.showErrorAlert(err, '/users/add');
       },
     });
   }
