@@ -18,6 +18,7 @@ export class UserListComponent extends AbstractComponent implements OnInit {
 
   ngOnInit() {
     this.loadUsers();
+    this.checkAdmin();
   }
   constructor(
     public userService: UserService,
@@ -27,6 +28,21 @@ export class UserListComponent extends AbstractComponent implements OnInit {
   ) {
     super(ngZone, router);
   }
+
+  checkAdmin() {
+    this.userService.getUser().subscribe({
+      next: (data) => {
+        if (data.role == 'ROLE_ADMIN') {
+          return;
+        }
+        this.router.navigateByUrl('forbidden');
+      },
+      error: (err) => {
+        this.router.navigateByUrl('forbidden');
+      },
+    });
+  }
+
   // users list
   loadUsers() {
     return this.userService.getUsers().subscribe({
@@ -38,7 +54,7 @@ export class UserListComponent extends AbstractComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.router.navigateByUrl('forbidden')
+        this.router.navigateByUrl('forbidden');
       },
     });
   }
@@ -56,7 +72,7 @@ export class UserListComponent extends AbstractComponent implements OnInit {
         this.showSuccesAlert('/users');
       },
       error: (err) => {
-        this.router.navigateByUrl('forbidden')
+        this.router.navigateByUrl('forbidden');
       },
     });
   }
@@ -76,24 +92,5 @@ export class UserListComponent extends AbstractComponent implements OnInit {
 
   resetSearch() {
     this.userList = Array.from(this.searchList);
-  }
-
-  sortData(sortingBy: string) {
-    if (sortingBy == 'Nom') {
-      if (this.orderName == '(croissant)') {
-        this.orderName = '(décroissant)';
-      } else {
-        this.orderName = '(croissant)';
-      }
-      this.sortNbName = -this.sortNbName;
-
-      this.userList.sort((a: { username: string }, b: { username: string }) => {
-        if (a.username < b.username) {
-          return -this.sortNbName;
-        } else {
-          return this.sortNbName;
-        }
-      });
-    }
   }
 }

@@ -5,25 +5,18 @@
           <form class="d-flex mb-2" role="search" (ngSubmit)="onSubmit($event)">
             <input class="form-control me-2" type="search" placeholder="Nom de l'utilisateur'" aria-label="Search"
               name="search">
-            <button type="submit" class="btn btn-info">Rechercher</button>
+            <button type="submit" class="btn btn-warning">Rechercher</button>
+            <button type="button" class="btn btn-danger" (click)="resetSearch()">Réinitialisation</button>
           </form>
         </div>
   
         <div class="inner my-4">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle me-1" type="button" id="dropdownMenu2"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Tri
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button" (click)="sortData('Nom')">Nom {{orderName}}</button>
-            </div>
-            <button type="button" class="btn btn-danger" (click)="resetSearch()">Réinitialisation</button>
-            <button class="btn btn-primary float-end" type="button" routerLink="/users/add">Ajout d'un
+          <div class="dropdown">            
+            <button class="btn btn-secondary float-end" type="button" routerLink="/users/add">Ajout d'un
               utilisateur</button>
           </div>
   
-          <table class="table">
+          <table class="styled-table">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -36,8 +29,6 @@
                 <th scope="row">{{user.id}}</th>
                 <td>{{user.username}}</td>
                 <td>
-                  <button type="button" class="btn btn-success btn-sm me-1"
-                    [routerLink]="['/users/edit', user.id]">Editer</button>
                   <button type="button" class="btn btn-danger btn-sm me-1"
                     (click)="deleteUser(user)">Supprimer</button>
                 </td>

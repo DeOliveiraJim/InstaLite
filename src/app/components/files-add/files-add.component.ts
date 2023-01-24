@@ -4,6 +4,7 @@ import { AbstractComponent } from '../abstract.component';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FilesService } from 'src/app/services/files.service';
+import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-files-add',
   templateUrl: './files-add.component.html',
@@ -20,6 +21,7 @@ export class FilesAddComponent extends AbstractComponent implements OnInit {
 
   constructor(
     private uploadService: FilesService,
+    private userService: UserService,
     ngZone: NgZone,
     router: Router
   ) {
@@ -27,7 +29,22 @@ export class FilesAddComponent extends AbstractComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.checkAdmin();
     this.loadFiles();
+  }
+
+  checkAdmin() {
+    this.userService.getUser().subscribe({
+      next: (data) => {
+        if (data.role == 'ROLE_ADMIN') {
+          return;
+        }
+        this.router.navigateByUrl('forbidden');
+      },
+      error: (err) => {
+        this.router.navigateByUrl('forbidden');
+      },
+    });
   }
 
   loadFiles() {
@@ -39,7 +56,7 @@ export class FilesAddComponent extends AbstractComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.router.navigateByUrl('forbidden')
+        this.router.navigateByUrl('forbidden');
       },
     });
   }
@@ -107,7 +124,7 @@ export class FilesAddComponent extends AbstractComponent implements OnInit {
         this.showSuccesAlert('/files');
       },
       error: (err) => {
-        this.router.navigateByUrl('forbidden')
+        this.router.navigateByUrl('forbidden');
       },
     });
   }
