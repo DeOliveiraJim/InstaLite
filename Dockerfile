@@ -7,4 +7,4 @@ COPY . .
 
 RUN npm install -g @angular/cli
 RUN yarn install
-CMD ["npm", "start", "--host", "0.0.0.0"] 
+CMD ["npm", "serve", "--host", "0.0.0.0"]
