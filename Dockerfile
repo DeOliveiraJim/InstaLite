@@ -11,4 +11,4 @@ RUN ng build --configuration production
 
 FROM nginx:1.17-alpine
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /src/app/dist/InstaLite /usr/share/nginx/html
+COPY --from=builder /src/app/dist/insta-lite /usr/share/nginx/html
