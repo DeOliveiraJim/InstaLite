@@ -1,14 +1,10 @@
-FROM node:16.10-alpine AS builder
+FROM node:16
 
-WORKDIR /src/app
-COPY package.json package-lock.json ./
-RUN npm install
+RUN mkdir /app
+WORKDIR /app
 
-ENV PATH="./node_modules/.bin:$PATH"
+COPY . .
 
-COPY . ./
-RUN ng build --configuration production
-
-FROM nginx:1.17-alpine
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /src/app/dist/insta-lite /usr/share/nginx/html
+RUN npm install -g @angular/cli
+RUN yarn install
+CMD ["npm", "start", "--host", "0.0.0.0"]
