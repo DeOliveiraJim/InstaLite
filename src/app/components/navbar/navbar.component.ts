@@ -12,7 +12,7 @@ import { AbstractComponent } from '../abstract.component';
 export class NavbarComponent extends AbstractComponent implements OnInit {
   title = 'InstaLite';
   isAuthenticated = false;
-  testBoolean = false;
+  username="";
 
   constructor(
     private userService: UserService,
@@ -26,7 +26,16 @@ export class NavbarComponent extends AbstractComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.cookieService.getAll());
-    this.isAuthenticated = this.isConnected();
+    this.userService.getUser().subscribe({
+      next: data => {
+        this.isAuthenticated = true
+        this.username = data.username
+      },
+      error: err => {
+        this.isAuthenticated = false;
+        this.username = ""
+      }
+    })
   }
 
   isConnected() {

@@ -12,6 +12,7 @@ import { AbstractComponent } from '../abstract.component';
 export class PressInsertComponent extends AbstractComponent implements OnInit {
 
   pressInsertItems : PressInsertItem[] = [];
+  maxItems : number = 8;
 
   constructor(private pressService: PressService, public override ngZone: NgZone, public override router: Router) {
   super(ngZone, router);
@@ -22,7 +23,7 @@ export class PressInsertComponent extends AbstractComponent implements OnInit {
       var parser = new DOMParser()
       let parsed = parser.parseFromString(data, 'text/xml')
       let items = parsed.getElementsByTagName('item')
-      for (let itemKey in Object.keys(items).filter(k => !isNaN(Number(k)))) {
+      for (let itemKey in Object.keys(items).filter(k => !isNaN(Number(k))).slice(0, this.maxItems)) {
         let item = items[itemKey]
         var pressInsertItem = {
           title: item.childNodes.item(0).textContent,

@@ -1,7 +1,7 @@
-<ul class="d-flex flex-wrap justify-content-center list-unstyled gap-2">
-    <li style="width: 190px;" class="border rounded p-2" *ngFor="let item of pressInsertItems">
-        <h5>{{item.title}}</h5>
+<ul class="d-flex flex-wrap justify-content-center list-unstyled gap-1">
+    <li style="width: 230px;" class="border rounded p-2 text-center" *ngFor="let item of pressInsertItems">
+        <a class="nav-link" href="{{item.link}}" target="_blank"><span class="h5">{{item.title}}</span></a>
         <img class="w-100" src="{{item.media}}"/>
-        <p>{{ item.description }}</p>
+        <p style="text-align: justify;" class="small mb-0">{{ item.description }}</p>
     </li>
 </ul>

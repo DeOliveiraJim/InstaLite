@@ -1,9 +1,10 @@
-<div class="row border border-dark w-25 p-3">
+<div class="d-flex flex-column align-items-center p-3">
       <label class="btn btn-default p-0">
         <input type="file" accept="*" (change)="selectFile($event)" />
       </label>   
       <button
-        class="btn btn-success btn-sm float-right"
+        class="btn btn-success btn-sm float-right w-75"
+        [ngClass]="{red : !selectedFiles}"
         [disabled]="!selectedFiles"
         (click)="upload()"      >
         Upload
@@ -12,7 +13,7 @@
   
 
   
-  <div *ngIf="currentFile && progress" class="progress my-3">
+  <div *ngIf="currentFile && progress && !message" class="progress my-3">
     <div
       class="progress-bar progress-bar-info"
       role="progressbar"
@@ -34,9 +35,9 @@
       <tr>
         <th scope="col">URL</th>
         <th scope="col">Fichier</th>
-        <th scope="col">Status</th>
-        <th scope="col">Edition</th>
-        <th scope="col">Suppression</th>
+        <th scope="col">Statut</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -73,6 +74,6 @@
       </tr>
     </tbody>
   </table>
-  <pagination-controls class="pagination" (pageChange)="pages = $event" previousLabel="Précédent"
+  <pagination-controls class="pagination d-flex justify-content-center align-items-center" (pageChange)="pages = $event" previousLabel="Précédent"
   nextLabel="Suivant" [responsive]="true">
   </pagination-controls>

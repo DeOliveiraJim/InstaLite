@@ -25,6 +25,5 @@ export class HomePageComponent extends AbstractComponent {
   currentUser!: string;
 
   ngOnInit(): void {
-    
   }
 }
