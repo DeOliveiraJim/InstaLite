@@ -31,6 +31,21 @@ export class FilesDisplayComponent extends AbstractComponent implements OnInit {
         if (data) {
           this.filesList = new Array();
           this.filesList.push(...data);
+          this.filesList.forEach(file => {
+            switch (file.status) {
+              case "public":
+                file.status = "Publique"
+                break;
+              case "private":
+                file.status = "Privé"
+                break;
+              case "hidden":
+                file.status = "Caché"
+                break;
+              default:
+                break;
+            }
+          }); 
         }
       },
       error: (err) => {

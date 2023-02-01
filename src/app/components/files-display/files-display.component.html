@@ -1,9 +1,9 @@
-<table  class="styled-table">
+<table class="styled-table vw-75 text-center">
   <thead>
-    <tr>
-      <th scope="col">URL</th>
+    <tr class="text-center">
+      <th scope="col" class="w-20">URL</th>
       <th scope="col">Fichier</th>
-      <th scope="col">Statut</th>
+      <th scope="col" class="w-10">Statut</th>
     </tr>
   </thead>
   <tbody>
@@ -22,8 +22,7 @@
           <video  [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
               <source src="{{ file.url }}" type="video/mp4">
           </video>
-        </vg-player> 
-        <a > <img class="resize" src="{{ file.url }}" alt="{{ file.name }}"   /></a>
+        </vg-player>
       </td>
       <td>
         {{file.status}}
@@ -31,6 +30,6 @@
     </tr>
   </tbody>
 </table>
-<pagination-controls class="pagination" (pageChange)="pages = $event" previousLabel="Précédent"
+<pagination-controls class="pagination d-flex justify-content-center align-items-center" (pageChange)="pages = $event" previousLabel="Précédent"
 nextLabel="Suivant" [responsive]="true">
 </pagination-controls>

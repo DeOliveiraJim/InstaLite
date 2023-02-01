@@ -1,27 +1,24 @@
-<div class="container wrapper">
+<div class="">
     <div class="row">
       <div class="col-md-12">
-        <div class="header mb-4">
-          <form class="d-flex mb-2" role="search" (ngSubmit)="onSubmit($event)">
-            <input class="form-control me-2" type="search" placeholder="Nom de l'utilisateur'" aria-label="Search"
+        <div class="header m-2">
+          <form class="d-flex my-2 gap-1" role="search" (ngSubmit)="onSubmit($event)">
+            <button class="btn btn-secondary" type="button" routerLink="/users/add">Ajouter</button>
+            <input class="form-control" type="search" placeholder="Nom de l'utilisateur" aria-label="Search"
               name="search">
             <button type="submit" class="btn btn-warning">Rechercher</button>
-            <button type="button" class="btn btn-danger" (click)="resetSearch()">Réinitialisation</button>
+            <button type="button" class="btn btn-danger" (click)="resetSearch()">Réinitialiser</button>
           </form>
         </div>
   
-        <div class="inner my-4">
-          <div class="dropdown">            
-            <button class="btn btn-secondary float-end" type="button" routerLink="/users/add">Ajout d'un
-              utilisateur</button>
-          </div>
+        <div class="d-flex flex-column justify-content-center align-items-center inner my-2">
   
-          <table class="styled-table">
+          <table class="styled-table vw-50">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Utilisateurs</th>
-                <th scope="col">Actions</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -36,7 +33,7 @@
             </tbody>
           </table>
   
-          <pagination-controls class="pagination" (pageChange)="pages = $event" previousLabel="Précédent"
+          <pagination-controls class="pagination d-flex justify-content-center align-items-center" (pageChange)="pages = $event" previousLabel="Précédent"
             nextLabel="Suivant" [responsive]="true">
           </pagination-controls>
         </div>

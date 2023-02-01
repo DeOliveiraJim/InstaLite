@@ -44,7 +44,6 @@ export class UserConnectComponent extends AbstractComponent implements OnInit {
     }
     this.userService.logUser(this.userForm.value).subscribe({
       next: (user) => {
-        console.log('addConnectionCookie')
         this.navbar.addConnectionCookie()
         this.showSuccesAlert('/home');
       },

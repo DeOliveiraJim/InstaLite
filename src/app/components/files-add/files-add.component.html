@@ -30,14 +30,14 @@
     {{ message }}
   </div>
 
-  <table class="styled-table">
+  <table class="styled-table vw-75  text-center">
     <thead>
-      <tr>
-        <th scope="col">URL</th>
+      <tr class="text-center">
+        <th scope="col" class="w-20">URL</th>
         <th scope="col">Fichier</th>
-        <th scope="col">Statut</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
+        <th scope="col" class="w-5">Statut</th>
+        <th scope="col" class="w-5"></th>
+        <th scope="col" class="w-5"></th>
       </tr>
     </thead>
     <tbody>
@@ -57,8 +57,7 @@
             <video  [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
                 <source src="{{ file.url }}" type="video/mp4">
             </video>
-          </vg-player> 
-          <a (click)="showChoiceAlert(file)" > <img class="resize" src="{{ file.url }}" alt="{{ file.name }}"   /></a>
+          </vg-player>
         </td>
         <td>
           {{file.status}}
