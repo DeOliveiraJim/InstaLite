@@ -37,7 +37,9 @@ export class UserPageComponent extends AbstractComponent implements OnInit {
         this.username = data.username;
       },
       error: (err) => {
-        this.router.navigateByUrl('forbidden')
+        if (err.status == 403) {
+          this.router.navigateByUrl('forbidden')
+        }
       },
     });
   }

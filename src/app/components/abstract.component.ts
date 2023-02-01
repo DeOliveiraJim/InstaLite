@@ -15,7 +15,7 @@ export abstract class AbstractComponent {
     this.router = router;
   }
 
-  showErrorAlert(erreur: string, route: string) {
+  showErrorAlert(erreur: any, route: string) {
     Swal.fire({
       title: 'Erreur !',
       text: erreur,

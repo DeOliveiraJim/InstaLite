@@ -33,13 +33,14 @@ export class FilesEditComponent extends AbstractComponent implements OnInit {
   }
 
   getFile() {
-    console.log('je get');
     this.fileService.getFileInfo(this.id).subscribe({
       next: (data) => {
         this.file = data;
       },
       error: (err) => {
-        this.router.navigateByUrl('forbidden')
+        if (err.status == 403) {
+          this.router.navigateByUrl('forbidden')
+        }
       },
     });
   }

@@ -15,27 +15,12 @@ export abstract class AbstractService {
   //     )
   //     .pipe(retry(1), catchError(this.errorHandler)); HERE !
   // }
-
+  
   // Error handling
   errorHandler(error: any) {
-    if (!environment.production) console.log(error);
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
-    } else {
-      // Get server-side error
-      errorMessage = 'Erreur !!';
-      if (error.error.message != undefined) {
-        errorMessage = 'Erreur : ' + error.error.message;
-      } else if (error.error.error != undefined) {
-        errorMessage = 'Erreur : ' + error.error.error;
-      } else {
-        errorMessage = 'Erreur : ' + error.error;
-      }
-    }
+    if (!environment.production) console.log(error.status);
     return throwError(() => {
-      return errorMessage;
+      return error.error;
     });
   }
 }

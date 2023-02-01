@@ -1,16 +1,11 @@
 <div class="container wrapper wrapper2">
-    <div class="row">
+    <div *ngIf="currentFile" class="row">
         <!-- Form -->
         <div class="col-md-12">
-            <h3>Modification du status d'un fichier</h3>
+            <h3>Modification du statut du fichier</h3>
             <form (ngSubmit)="submitForm()">
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nom du fichier</th>
-                        </tr>
-                    </thead>
-                    <ng-container *ngIf="currentFile">
+                    <ng-container>
                         <td scope="col">{{currentFile.name}}</td>
                       </ng-container>
                     
@@ -23,8 +18,13 @@
                         <option value="public">Publique</option>
                       </select>                      
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
+                <button type="submit" class="btn btn-primary mt-3">Modifier</button>
             </form>
+        </div>
+    </div>
+    <div *ngIf="!currentFile" class="row">
+        <div class="col-md-12">
+            <h3>Fichier introuvable</h3>
         </div>
     </div>
 </div>
