@@ -48,7 +48,6 @@ export class UserListComponent extends AbstractComponent implements OnInit {
     return this.userService.getUsers().subscribe({
       next: (data) => {
         if (data) {
-          console.log(data);
           this.userList.push(...data);
           this.searchList = Array.from(this.userList);
         }
@@ -80,11 +79,12 @@ export class UserListComponent extends AbstractComponent implements OnInit {
   onSubmit(event: SubmitEvent) {
     if (event.target === null) return;
     const target = event.target as HTMLFormElement;
-    const searchForm = target.childNodes[0] as HTMLInputElement;
+    const searchForm = target.childNodes[1] as HTMLInputElement;
     this.research(searchForm.value);
   }
 
   research(userName: string) {
+    console.log(userName)
     this.userList = Array.from(this.searchList)
       .filter((user: { username: string }) => user.username.includes(userName))
       .sort((a, b) => (a.username.length < b.username.length ? -1 : 1));

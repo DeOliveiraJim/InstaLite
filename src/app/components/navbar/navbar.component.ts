@@ -25,7 +25,6 @@ export class NavbarComponent extends AbstractComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.cookieService.getAll());
     this.userService.getUser().subscribe({
       next: data => {
         this.isAuthenticated = true
