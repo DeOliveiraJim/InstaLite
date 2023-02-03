@@ -11,7 +11,7 @@
                     <label>Nouveau mot de passe </label>
                     <input type="password" formControlName="newPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['newPassword'].errors }">
                     <div *ngIf="submitted && ctrls['newPassword'].errors" class="invalid-feedback">
-                        <div >Mot de passe obligatoire (8 caractères,1 majuscule,1 caractère spécial mini)</div>
+                        <div>Mot de passe obligatoire (8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial mini)</div>
                     </div>
                     <p>{{ errorMessage }}</p>
                 </div>

@@ -13,7 +13,7 @@
                     <label>Mot de passe utilisateur </label>
                     <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['password'].errors }">
                     <div *ngIf="submitted && ctrls['password'].errors" class="invalid-feedback">
-                        <div >Mot de passe obligatoire (8 caractères,1 majuscule,1 caractère spécial mini)</div>
+                        <div>Mot de passe obligatoire (8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial mini)</div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
