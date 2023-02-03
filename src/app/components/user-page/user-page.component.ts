@@ -14,6 +14,7 @@ export class UserPageComponent extends AbstractComponent implements OnInit {
   submitted: boolean = false;
   username: string = '';
   idUser: number = 0;
+  errorMessage: string = ''
 
   ngOnInit() {
     this.getUser();
@@ -53,7 +54,7 @@ export class UserPageComponent extends AbstractComponent implements OnInit {
           Validators.required,
           Validators.minLength(8),
           Validators.pattern(
-            '^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&+-_])(?=.*[a-zA-Zd@$!%*?&+-_])+.{8,}$'
+            '^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&\\+\\-_])(?=.*[a-zA-Z\d@$!%*?&\\+\\-_])+.{8,}$'
           ),
         ],
       ],
@@ -69,12 +70,18 @@ export class UserPageComponent extends AbstractComponent implements OnInit {
     if (this.userForm.invalid) {
       return;
     }
+    console.log(this.idUser, this.userForm.value)
     this.userService.updateUser(this.idUser, this.userForm.value).subscribe({
       next: (user) => {
         this.showSuccesAlert('/profile');
       },
       error: (err) => {
-        this.router.navigateByUrl('forbidden')
+        if (err.status == 403) {
+          this.router.navigateByUrl('forbidden')
+        }
+        if (err.status == 400) {
+          this.errorMessage = err.error
+        }
       },
     });
   }

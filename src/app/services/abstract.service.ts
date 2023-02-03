@@ -20,7 +20,7 @@ export abstract class AbstractService {
   errorHandler(error: any) {
     if (!environment.production) console.log(error.status);
     return throwError(() => {
-      return error.error;
+      return error;
     });
   }
 }

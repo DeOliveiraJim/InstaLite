@@ -26,11 +26,17 @@ export class UserAddComponent extends AbstractComponent implements OnInit {
   addUser() {
     this.userForm = this.fb.group({
       username: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required,
+                      Validators.minLength(8),
+                      Validators.pattern(
+                      '^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&\\+\\-_])(?=.*[a-zA-Z\d@$!%*?&\\+\\-_])+.{8,}$'
+                      )
+      ]],
     });
   }
 
   get ctrls() {
+    console.log(this.userForm.controls)
     return this.userForm.controls;
   }
 
@@ -44,7 +50,7 @@ export class UserAddComponent extends AbstractComponent implements OnInit {
         this.showSuccesAlert('/users');
       },
       error: (err) => {
-        this.showErrorAlert(err, '/users/add');
+        this.showErrorAlert(err.error, '/users/add');
       },
     });
   }

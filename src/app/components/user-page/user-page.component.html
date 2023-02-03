@@ -6,8 +6,6 @@
             <h4> Changement de mot de passe : </h4>
             <form [formGroup]="userForm" (ngSubmit)="submitForm()">
                 <div class="form-group mb-2">
-                    <label>Nom de l'utilisateur</label> 
-                    <p>{{username}}</p>
                     <label>Ancien mot de passe</label>
                     <input type="password" formControlName="oldPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && ctrls['oldPassword'].errors }" >
                     <label>Nouveau mot de passe </label>
@@ -15,6 +13,7 @@
                     <div *ngIf="submitted && ctrls['newPassword'].errors" class="invalid-feedback">
                         <div >Mot de passe obligatoire (8 caractères,1 majuscule,1 caractère spécial mini)</div>
                     </div>
+                    <p>{{ errorMessage }}</p>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
             </form>
